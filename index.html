@@ -7,52 +7,43 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
     <script>
       $(function() {
-        $("#up").click(function() {
-          var current = Number( $("#count").text() );
-          current++;
-          $("#count").text( current );
+        // MODEL
+        // Source of truth
+        var count = 0;
 
-          if (current >= 8) {
+        // VIEW
+        function render() {
+          $("#count").text(count);
+
+          // Set the color
+          if (count >= 8) {
             $("#count").css("color", "red");
+          } else {
+            $("#count").css("color", "black");
           }
 
-          if (current % 2 == 0) { // even
+          // Set the style
+          if (count % 2 == 0) { // even
             $("#count").css("font-style", "italic")
           } else { // odd
             $("#count").css("font-style", "normal")
           }
+        }
+
+        // CONTROLLER
+        $("#up").click(function() {
+          count++;
+          render();
         })
 
         $("#down").click(function() {
-          var current = Number( $("#count").text() );
-          current--;
-          $("#count").text( current );
-
-          if (current < 8) {
-            $("#count").css("color", "black");
-          }
-
-          if (current % 2 == 0) { // even
-            $("#count").css("font-style", "italic")
-          } else { // odd
-            $("#count").css("font-style", "normal")
-          }
+          count--;
+          render();
         })
 
         $("#reset").click(function() {
-          var current = 0;
-          
-          $("#count").text(current);
-
-          if (current < 8) {
-            $("#count").css("color", "black");
-          }
-
-          if (current % 2 == 0) { // even
-            $("#count").css("font-style", "italic")
-          } else { // odd
-            $("#count").css("font-style", "normal")
-          }
+          count = 0;
+          render();
         })
       })
     </script>
