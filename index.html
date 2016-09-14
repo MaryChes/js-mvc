@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS MVC</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $("#up").click(function() {
+          var current = Number( $("#count").text() );
+          current++;
+          $("#count").text( current );
+
+          if (current >= 8) {
+            $("#count").css("color", "red");
+          }
+
+          if (current % 2 == 0) { // even
+            $("#count").css("font-style", "italic")
+          } else { // odd
+            $("#count").css("font-style", "normal")
+          }
+        })
+
+        $("#down").click(function() {
+          var current = Number( $("#count").text() );
+          current--;
+          $("#count").text( current );
+
+          if (current < 8) {
+            $("#count").css("color", "black");
+          }
+
+          if (current % 2 == 0) { // even
+            $("#count").css("font-style", "italic")
+          } else { // odd
+            $("#count").css("font-style", "normal")
+          }
+        })
+
+        $("#reset").click(function() {
+          var current = 0;
+          
+          $("#count").text(current);
+
+          if (current < 8) {
+            $("#count").css("color", "black");
+          }
+
+          if (current % 2 == 0) { // even
+            $("#count").css("font-style", "italic")
+          } else { // odd
+            $("#count").css("font-style", "normal")
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>MVC</h1>
+
+      <button id="down" class="btn btn-default">-</button>
+
+      <div id="count">0</div>
+
+      <button id="up" class="btn btn-default">+</button>
+
+      <button id="reset" class="btn btn-danger">Reset</button>
+    </div>
+  </body>
+</html>
